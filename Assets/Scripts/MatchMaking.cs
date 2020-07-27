@@ -18,10 +18,12 @@ public class MatchMaking : MonoBehaviourPunCallbacks {
         PhotonNetwork.JoinRandomRoom();
     }
     
-    public override void OnJoinedRoom()
-    {
+    public override void OnJoinedRoom() {
+        int numbers = PhotonNetwork.CountOfPlayers;
+        Debug.Log("Players # : "+numbers); ;
+        PlayerPrefs.SetInt("index",numbers);
         networkText.text = "Room Joined :)";
-        PhotonNetwork.LoadLevel("Room");
+        PhotonNetwork.LoadLevel("MovementTest");
     }
     
     public override void OnJoinRandomFailed(short returnCode, string message)
