@@ -11,13 +11,18 @@ public class Weapon : MonoBehaviour {
 
     void FixedUpdate() {
         if (_photonView.IsMine) {
-            _photonView.RPC("Fire",RpcTarget.All);
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            _photonView.RPC("Fire",RpcTarget.All,mousePosition);
         }
     }
 
     [PunRPC]
-    public void Fire() {
+    public void Fire(Vector2 mousePosition) {
+        Vector2 direction = (mousePosition - (Vector2) firePoint.position).normalized;
+        firePoint.transform.up = direction;
         GameObject projectile = Instantiate(bullet.gameObject, firePoint.position, firePoint.rotation);
+       // projectile.transform.up = position;
         projectile.GetComponent<Rigidbody2D>().AddForce(firePoint.up * shootingSpeed, ForceMode2D.Impulse);
     }
 }
