@@ -191,7 +191,7 @@ SpriteRenderer:
   m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &6912726364962608973
@@ -232,6 +232,7 @@ MonoBehaviour:
   rb: {fileID: 6912726364962608973}
   weapon: {fileID: 0}
   _photonView: {fileID: 4000303240122095402}
+  _animator: {fileID: 0}
 --- !u!114 &4000303240122095402
 MonoBehaviour:
   m_ObjectHideFlags: 0
