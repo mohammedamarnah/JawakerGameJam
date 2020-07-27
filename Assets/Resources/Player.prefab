@@ -259,3 +259,4 @@ MonoBehaviour:
   firePoint: {fileID: 5662008448978849822}
   bullet: {fileID: 1135263190072995449, guid: 58045c8e53fa24b61b8dc0dab678b915, type: 3}
   shootingSpeed: 20
+  _photonView: {fileID: -1787802223956803810}

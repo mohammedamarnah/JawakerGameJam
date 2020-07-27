@@ -30,8 +30,6 @@ public class MovementTest : MonoBehaviour {
         Vector2 aimDirection = mousePosition - rb.position;
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = aimAngle;
-          _photonView.RPC("Fire",RpcTarget.All);
-          //weapon.Fire();
       }
     }
 }
