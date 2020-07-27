@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.NetworkInformation;
 using UnityEngine;
 
@@ -15,6 +16,10 @@ public class Bullet : MonoBehaviour {
         if (other.gameObject.tag == "Wall") {
             // Instantiate(impactEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
+        } else if (other.gameObject.tag == "Hostage") {
+            int hstID = other.gameObject.GetComponent<Hostage>().ID;
+            Hostage selectedHst = Hostage.currentHostages.Where(h => h.ID == hstID).FirstOrDefault();
+            selectedHst.GetInjured();
         }
     }
 }
