@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 public class MovementTest : MonoBehaviour {
@@ -7,11 +8,14 @@ public class MovementTest : MonoBehaviour {
     public Camera mainCamera;
     public Rigidbody2D rb;
     public Weapon weapon;
+    [SerializeField] private PhotonView _photonView;
     public int ID = 0;
 
     private Vector2 moveDirection, mousePosition;
-    
 
+    void Awake() {
+      mainCamera = Camera.main;
+    }
     void Update() {
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
@@ -21,12 +25,13 @@ public class MovementTest : MonoBehaviour {
     }
     
     void FixedUpdate() {
-       rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
-       Vector2 aimDirection = mousePosition - rb.position;
-       float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
-       rb.rotation = aimAngle;
-       if (weapon != null) {
-         weapon.Fire();
-       }
+      if (_photonView.IsMine) {
+        rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+        Vector2 aimDirection = mousePosition - rb.position;
+        float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
+        rb.rotation = aimAngle;
+          _photonView.RPC("Fire",RpcTarget.All);
+          //weapon.Fire();
+      }
     }
 }

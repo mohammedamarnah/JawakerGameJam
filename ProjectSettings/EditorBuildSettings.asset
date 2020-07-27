@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Room.unity
     guid: e13a480bc5720484ebad4b9310756de4
+  - enabled: 1
+    path: Assets/Scenes/MovementTest.unity
+    guid: ce2a8d8312f8b4e5d959802b3921609c
   m_configObjects: {}
