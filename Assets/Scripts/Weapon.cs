@@ -6,9 +6,15 @@ using UnityEngine;
 public class Weapon : MonoBehaviour {
     public Transform firePoint;
     public Bullet bullet;
-
     public float shootingSpeed;
-    // Update is called once per frame
+    [SerializeField] private PhotonView _photonView;
+
+    void FixedUpdate() {
+        if (_photonView.IsMine) {
+            _photonView.RPC("Fire",RpcTarget.All);
+        }
+    }
+
     [PunRPC]
     public void Fire() {
         Debug.Log("All");
