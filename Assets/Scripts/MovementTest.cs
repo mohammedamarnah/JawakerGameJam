@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MovementTest : MonoBehaviour {
     public float moveSpeed = 0.5f;
@@ -9,7 +10,6 @@ public class MovementTest : MonoBehaviour {
     public Rigidbody2D rb;
     public Weapon weapon;
     [SerializeField] private PhotonView _photonView;
-    public int ID = 0;
 
     private Vector2 moveDirection, mousePosition;
 
@@ -19,7 +19,7 @@ public class MovementTest : MonoBehaviour {
     void Update() {
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
-
+        
         moveDirection = new Vector2(moveX, moveY).normalized;
         mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
     }

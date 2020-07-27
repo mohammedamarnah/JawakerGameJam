@@ -17,7 +17,6 @@ public class Weapon : MonoBehaviour {
 
     [PunRPC]
     public void Fire() {
-        Debug.Log("All");
         GameObject projectile = Instantiate(bullet.gameObject, firePoint.position, firePoint.rotation);
         projectile.GetComponent<Rigidbody2D>().AddForce(firePoint.up * shootingSpeed, ForceMode2D.Impulse);
     }
