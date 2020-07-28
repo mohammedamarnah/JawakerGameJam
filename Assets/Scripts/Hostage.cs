@@ -7,20 +7,73 @@ public class Hostage : MonoBehaviour {
   [SerializeField] private bool isWalking;
   [SerializeField] private float walkTime, waitTime, moveSpeed;
   [SerializeField] public int ID;
+  [SerializeField] private GameObject[] pointers;
+  [SerializeField] private int currentMove = 0;
+  [SerializeField] private Animator _animator;
+  
+  [SerializeField] private bool ActiveReverse;
+  [SerializeField] private float waitingTimeBeforeMove = 2f;
 
   private float walkCounter, waitCounter;
   private int walkDirection;
   private Rigidbody2D rb;
   public static List<Hostage> currentHostages = new List<Hostage>();
+  private bool onBack = false;
 
   void Awake() {
     rb = this.GetComponent<Rigidbody2D>();
     Hostage.currentHostages.Add(this);
-    ChooseDirection();
+  //  ChooseDirection();
+  Movement();
+  }
+
+  void Movement() {
+    if (currentMove < pointers.Length) {
+      NextPath();
+    }
+  }
+
+  void NextPath() {
+    StartCoroutine(LookAfterMoving());
+  }
+
+  IEnumerator LookAfterMoving() {
+    if (currentMove == 0 || currentMove == pointers.Length-1) {
+      _animator.SetFloat("Speed",0);
+      yield return new WaitForSeconds(waitingTimeBeforeMove);
+    }
+    if (((currentMove+1) < pointers.Length) && !onBack) {
+      Debug.Log("Move to : "+currentMove);
+      currentMove++;
+      iTween.MoveTo(gameObject,iTween.Hash("position",pointers[currentMove].transform.position,"oncomplete","LookAfterMoving","time",2.5f,"easetype",iTween.EaseType.linear));
+      Vector2 direction = ((Vector2)pointers[currentMove].transform.position - (Vector2) transform.position).normalized;
+      _animator.SetFloat("Horizontal",direction.x);
+      _animator.SetFloat("Vertical",direction.y);
+      _animator.SetFloat("Speed",transform.position.sqrMagnitude);
+    } else {
+      if (ActiveReverse && !onBack) {
+        onBack = true;
+      }
+      if (currentMove >= 0 && onBack) {
+        if (currentMove != 0) {
+          currentMove--;
+          iTween.MoveTo(gameObject,iTween.Hash("position",pointers[currentMove].transform.position,"oncomplete","LookAfterMoving","time",2f,"easetype",iTween.EaseType.easeInSine));
+          Vector2 direction = ((Vector2)pointers[currentMove].transform.position - (Vector2) transform.position).normalized;
+          _animator.SetFloat("Horizontal",direction.x);
+          _animator.SetFloat("Vertical",direction.y);
+          _animator.SetFloat("Speed",transform.position.sqrMagnitude);
+        } else {
+          onBack = false;
+          NextPath();
+        }
+      } else {
+        onBack = false;
+      }
+    }
   }
 
   void Update() {
-    if (isWalking) {
+    /*if (isWalking) {
       walkCounter -= Time.deltaTime;
       if (walkCounter < 0) {
         isWalking = false;
@@ -49,6 +102,7 @@ public class Hostage : MonoBehaviour {
         ChooseDirection();
       }
     }
+    */
   }
   
   public void GetInjured() {
