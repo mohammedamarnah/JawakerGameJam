@@ -9,7 +9,7 @@ public class MenuController : MonoBehaviour {
     [SerializeField]
     Text soundsText;
 
-    [SerializeField] private GameObject MatachMaking;
+    [SerializeField] private GameObject MatachMaking,Controller;
 
     void Start() {
         play.onClick.AddListener(Play);
@@ -17,7 +17,7 @@ public class MenuController : MonoBehaviour {
     }
 
     void Play() {
-        this.gameObject.SetActive(false);
+        Controller.SetActive(false);
         MatachMaking.SetActive(true);
     }
 

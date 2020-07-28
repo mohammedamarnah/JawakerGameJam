@@ -7,11 +7,12 @@ using UnityEngine.UI;
 
 namespace JawakerGameJam {
 public class MatchMaking : MonoBehaviourPunCallbacks {
-    [SerializeField] private Text soundsText;
+    [SerializeField] private Text soundsText,infoText;
     [SerializeField] private Button play, sounds;
 
     void Awake() {
         play.onClick.AddListener(() => PhotonNetwork.ConnectUsingSettings());
+        infoText.text = "Searching for room";
         sounds.onClick.AddListener(ToggleSound);
     }
 
@@ -20,6 +21,7 @@ public class MatchMaking : MonoBehaviourPunCallbacks {
     }
     
     public override void OnConnectedToMaster() {
+        infoText.text = "Searching for room ..";
         PhotonNetwork.JoinRandomRoom();
     }
     
@@ -31,6 +33,7 @@ public class MatchMaking : MonoBehaviourPunCallbacks {
     
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
+        infoText.text = "Searching for room ...";
         CreateRoom();
     }
 
