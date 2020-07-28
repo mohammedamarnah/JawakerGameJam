@@ -9,6 +9,8 @@ public class MenuController : MonoBehaviour {
     [SerializeField]
     Text soundsText;
 
+    [SerializeField] private GameObject MatachMaking;
+
     void Start() {
         play.onClick.AddListener(Play);
         sounds.onClick.AddListener(ToggleSound);
@@ -16,6 +18,7 @@ public class MenuController : MonoBehaviour {
 
     void Play() {
         this.gameObject.SetActive(false);
+        MatachMaking.SetActive(true);
     }
 
     void ToggleSound() {

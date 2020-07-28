@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
@@ -40,7 +41,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnLeftRoom() {
       PhotonNetwork.DestroyAll();
       PhotonNetwork.LeaveRoom();
-      PhotonNetwork.LoadLevel("Home");
+      SceneManager.LoadScene("Home", LoadSceneMode.Additive);
       Debug.Log("Left Room");
     }
     
