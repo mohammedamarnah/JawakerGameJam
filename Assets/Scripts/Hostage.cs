@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 public class Hostage : MonoBehaviour {
@@ -7,12 +8,12 @@ public class Hostage : MonoBehaviour {
   [SerializeField] private bool isWalking;
   [SerializeField] private float walkTime, waitTime, moveSpeed;
   [SerializeField] public int ID;
-  [SerializeField] private GameObject[] pointers;
+  [SerializeField] public GameObject[] pointers;
   [SerializeField] private int currentMove = 0;
   [SerializeField] private Animator _animator;
   
   [SerializeField] private bool ActiveReverse;
-  [SerializeField] private float waitingTimeBeforeMove = 2f;
+  [SerializeField] public float waitingTimeBeforeMove = 2f;
 
   private float walkCounter, waitCounter;
   private int walkDirection;
@@ -22,12 +23,10 @@ public class Hostage : MonoBehaviour {
 
   void Awake() {
     rb = this.GetComponent<Rigidbody2D>();
-    Hostage.currentHostages.Add(this);
-  //  ChooseDirection();
-  Movement();
+    //Hostage.currentHostages.Add(this);
   }
 
-  void Movement() {
+  public void Movement() {
     if (currentMove < pointers.Length) {
       NextPath();
     }
@@ -43,7 +42,6 @@ public class Hostage : MonoBehaviour {
       yield return new WaitForSeconds(waitingTimeBeforeMove);
     }
     if (((currentMove+1) < pointers.Length) && !onBack) {
-      Debug.Log("Move to : "+currentMove);
       currentMove++;
       iTween.MoveTo(gameObject,iTween.Hash("position",pointers[currentMove].transform.position,"oncomplete","LookAfterMoving","time",2.5f,"easetype",iTween.EaseType.linear));
       Vector2 direction = ((Vector2)pointers[currentMove].transform.position - (Vector2) transform.position).normalized;
@@ -114,7 +112,10 @@ public class Hostage : MonoBehaviour {
   }
 
   void Die() {
-    Destroy(this.gameObject);
+    if (PhotonNetwork.IsMasterClient) {
+      Debug.Log("Master Destroy NPC");
+      PhotonNetwork.Destroy(gameObject);
+    }
   }
 
   void ChooseDirection() {
