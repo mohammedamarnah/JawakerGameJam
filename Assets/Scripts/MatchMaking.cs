@@ -20,7 +20,6 @@ public class MatchMaking : MonoBehaviourPunCallbacks {
     
     public override void OnJoinedRoom() {
         int numbers = PhotonNetwork.CountOfPlayers;
-        Debug.Log("Players # : "+numbers); ;
         PlayerPrefs.SetInt("index",numbers);
         networkText.text = "Room Joined :)";
         PhotonNetwork.LoadLevel("MovementTest");
