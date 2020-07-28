@@ -7,27 +7,30 @@ using UnityEngine.UI;
 
 namespace JawakerGameJam {
 public class MatchMaking : MonoBehaviourPunCallbacks {
-    [SerializeField] private Text networkText;
-    
+    [SerializeField] private Text soundsText;
+    [SerializeField] private Button play, sounds;
+
     void Awake() {
-        PhotonNetwork.ConnectUsingSettings();
+        play.onClick.AddListener(() => PhotonNetwork.ConnectUsingSettings());
+        sounds.onClick.AddListener(ToggleSound);
+    }
+
+    public void ToggleSound() {
+        
     }
     
     public override void OnConnectedToMaster() {
-        networkText.text = "Try to join room";
         PhotonNetwork.JoinRandomRoom();
     }
     
     public override void OnJoinedRoom() {
         int numbers = PhotonNetwork.CurrentRoom.PlayerCount;
         PlayerPrefs.SetInt("index",numbers);
-        networkText.text = "Room Joined :)";
         PhotonNetwork.LoadLevel("MovementTest");
     }
     
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        networkText.text = "Create new room...";
         CreateRoom();
     }
 

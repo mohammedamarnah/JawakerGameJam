@@ -45,3 +45,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 621697575
+    locked: 0
+  - name: Barabeer
+    uniqueID: 3131034197
+    locked: 0
+  - name: Walls
+    uniqueID: 1299478639
+    locked: 0
+  - name: Barabeer2
+    uniqueID: 1894356249
+    locked: 0
+  - name: AkbarBarboor
+    uniqueID: 2390251143
+    locked: 0
