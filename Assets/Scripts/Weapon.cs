@@ -12,7 +12,6 @@ public class Weapon : MonoBehaviour {
     void FixedUpdate() {
         if (_photonView.IsMine) {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
             _photonView.RPC("Fire",RpcTarget.All,mousePosition);
         }
     }

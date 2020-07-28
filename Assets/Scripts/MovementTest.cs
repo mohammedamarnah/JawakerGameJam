@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class MovementTest : MonoBehaviourPun {
-    public float moveSpeed = 0.5f;
+    public float moveSpeed = 5f;
     public Camera mainCamera;
     public Rigidbody2D rb;
     [SerializeField] private PhotonView _photonView;
@@ -16,26 +16,10 @@ public class MovementTest : MonoBehaviourPun {
     void Awake() {
       mainCamera = Camera.main;
     }
-    
-       /* void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.isWriting)
-        {
-            stream.SendNext(x);
-            stream.SendNext(y);
-            stream.SendNext(z);
-        }
-        else
-        {
-            x = (int)stream.ReceiveNext();
-            y = (int)stream.ReceiveNext();
-            z = (int)stream.ReceiveNext();
-        }
-    }
-    */
+  
     void Update() {
-        if (_photonView.IsMine) {
-            movement.x = Input.GetAxis("Horizontal");
+        if (_photonView.IsMine) { 
+          movement.x = Input.GetAxis("Horizontal");
             movement.y = Input.GetAxis("Vertical");
             moveDirection = new Vector2(movement.x, movement.y).normalized;
             mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);

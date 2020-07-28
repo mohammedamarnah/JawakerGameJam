@@ -90,16 +90,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5662008450365195309}
-  - component: {fileID: 6596386452345469865}
   - component: {fileID: 5662008450365195298}
   - component: {fileID: 5662008450365195299}
   - component: {fileID: 5662008450365195296}
   - component: {fileID: 1925289781669199246}
   - component: {fileID: -1787802223956803810}
   - component: {fileID: 138990278204845325}
-  - component: {fileID: 4418213606270826788}
+  - component: {fileID: 6650125110543537936}
+  - component: {fileID: 7022812869820606267}
   m_Layer: 0
-  m_Name: Player
+  m_Name: BadGuy
   m_TagString: shooter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,25 +120,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &6596386452345469865
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5662008450365195297}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5d8a1f679f725457582c5841d943145e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &5662008450365195298
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -226,7 +207,7 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   rb: {fileID: 5662008450365195299}
   _photonView: {fileID: -1787802223956803810}
-  _animator: {fileID: 6596386452345469865}
+  _animator: {fileID: 6650125110543537936}
 --- !u!114 &1925289781669199246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,7 +243,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 138990278204845325}
-  - {fileID: 4418213606270826788}
+  - {fileID: 7022812869820606267}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -281,7 +262,26 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
---- !u!114 &4418213606270826788
+--- !u!95 &6650125110543537936
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5662008450365195297}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5d8a1f679f725457582c5841d943145e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7022812869820606267
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -297,13 +297,13 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 1
-    SynchronizeType: 1
+    SynchronizeType: 0
     Name: Vertical
   - Type: 1
-    SynchronizeType: 1
+    SynchronizeType: 0
     Name: Horizontal
   - Type: 1
-    SynchronizeType: 1
+    SynchronizeType: 0
     Name: Speed
   m_SynchronizeLayers:
   - SynchronizeType: 2

@@ -52,8 +52,6 @@ public class Hostage : MonoBehaviour {
   }
   
   public void GetInjured() {
-    Debug.Log(healthbar.localScale);
-    Debug.Log(healthbar.localPosition);
     healthbar.localScale -= new Vector3(0.05f, 0f, 0f);
     healthbar.localPosition -= new Vector3(0.01f, 0f, 0f);
     if (healthbar.localScale.x <= 0f) {
