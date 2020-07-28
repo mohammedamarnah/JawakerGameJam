@@ -11,7 +11,11 @@ public class MatchMaking : MonoBehaviourPunCallbacks {
     [SerializeField] private Button play, sounds;
 
     void Awake() {
-        play.onClick.AddListener(() => PhotonNetwork.ConnectUsingSettings());
+        PhotonNetwork.ConnectUsingSettings();
+        play.gameObject.SetActive(false);
+        play.onClick.AddListener(() => {
+            PhotonNetwork.JoinRandomRoom();
+        });
         infoText.text = "Searching for room";
         sounds.onClick.AddListener(ToggleSound);
     }
@@ -21,8 +25,8 @@ public class MatchMaking : MonoBehaviourPunCallbacks {
     }
     
     public override void OnConnectedToMaster() {
+        play.gameObject.SetActive(true);
         infoText.text = "Searching for room ..";
-        PhotonNetwork.JoinRandomRoom();
     }
     
     public override void OnJoinedRoom() {

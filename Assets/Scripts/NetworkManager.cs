@@ -36,13 +36,18 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
 
     public void LeaveRoom() {
+      Destroy(Component.FindObjectOfType<SoundManager>().gameObject);
       PhotonNetwork.LeaveRoom();
     }
     public override void OnLeftRoom() {
       PhotonNetwork.DestroyAll();
-      PhotonNetwork.LeaveRoom();
-      SceneManager.LoadScene("Home", LoadSceneMode.Additive);
+      PhotonNetwork.LoadLevel("Home");
       Debug.Log("Left Room");
+    /*  PhotonNetwork.DestroyAll();
+      PhotonNetwork.LeaveRoom();
+      */
+      //SceneManager.LoadScene("Home", LoadSceneMode.Single);
+     // Debug.Log("Left Room");
     }
     
 }
