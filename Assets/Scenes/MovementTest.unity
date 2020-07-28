@@ -199,7 +199,7 @@ MonoBehaviour:
   Paths:
   - {fileID: 1753656483}
   - {fileID: 1115476527}
-  NPC: {fileID: 5801462942742088505, guid: d5fb8d42434dc459d833311cc3cc6b6a, type: 3}
+  NPC: {fileID: 5801462942742088505, guid: 3c82fbd7ba2a74cebbcf61e90463bbb3, type: 3}
   waitingTimeBeforeMove: 0
 --- !u!1 &227808158
 GameObject:

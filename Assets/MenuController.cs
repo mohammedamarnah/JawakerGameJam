@@ -22,7 +22,6 @@ public class MenuController : MonoBehaviour {
     }
 
     void ToggleSound() {
-        int audioLevel = 0;
-        soundsText.text = $"sounds: {(audioLevel > 0 ? "on" : "off")}";
+        FindObjectOfType<SoundManager>().ToggleMuteSounds();
     }
 }
