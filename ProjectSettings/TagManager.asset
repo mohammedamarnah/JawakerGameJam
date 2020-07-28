@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - shooter
   - Hostage
+  - Items
   layers:
   - Default
   - TransparentFX

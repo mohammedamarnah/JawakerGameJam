@@ -15,8 +15,13 @@ public class Bullet : MonoBehaviour {
     public void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Wall") {
             Destroy(gameObject);
-        } else if (other.gameObject.tag == "Hostage") {
+        } else 
+        if (other.gameObject.tag == "Hostage") {
             other.GetComponent<Hostage>().GetInjured();
+        } else if (other.gameObject.tag == "Items") {
+            Destroy(gameObject);
+            ItemController it = other.gameObject.GetComponent<ItemController>();
+            it.GetInjured();
         }
     }
 }
