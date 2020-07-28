@@ -1606,10 +1606,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a4be95c21f74e0fad0611b445f2328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerShooterPrefab: {fileID: 5662008450365195297, guid: dc850d45e723348dd9fcba6e69eeb509,
-    type: 3}
-  playerDefenderPrefab: {fileID: 6912726364962608975, guid: 6331011ad0c7b420c89d50a9cc072b87,
-    type: 3}
+  playerShooterPrefab: BadGuy
+  playerDefenderPrefab: GoodGuy
 --- !u!4 &1901654833
 Transform:
   m_ObjectHideFlags: 0

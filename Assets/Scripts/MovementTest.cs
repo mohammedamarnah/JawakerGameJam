@@ -16,23 +16,7 @@ public class MovementTest : MonoBehaviourPun {
     void Awake() {
       mainCamera = Camera.main;
     }
-    
-       /* void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.isWriting)
-        {
-            stream.SendNext(x);
-            stream.SendNext(y);
-            stream.SendNext(z);
-        }
-        else
-        {
-            x = (int)stream.ReceiveNext();
-            y = (int)stream.ReceiveNext();
-            z = (int)stream.ReceiveNext();
-        }
-    }
-    */
+  
     void Update() {
         if (_photonView.IsMine) {
             movement.x = Input.GetAxis("Horizontal");
@@ -40,9 +24,9 @@ public class MovementTest : MonoBehaviourPun {
             moveDirection = new Vector2(movement.x, movement.y).normalized;
             mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             Vector2 direction = (mousePosition - (Vector2) transform.position).normalized;
-            _animator.SetFloat("Horizontal",direction.x);
-            _animator.SetFloat("Vertical",direction.y);
-            _animator.SetFloat("Speed",movement.sqrMagnitude);
+            //_animator.SetFloat("Horizontal",direction.x);
+            //_animator.SetFloat("Vertical",direction.y);
+              // _animator.SetFloat("Speed",movement.sqrMagnitude);
         }
     }
     
@@ -50,6 +34,7 @@ public class MovementTest : MonoBehaviourPun {
       if (_photonView.IsMine) {
         float newYVelocity = moveDirection.y * moveSpeed;
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, newYVelocity);
+        Debug.Log("Movvvee : "+ newYVelocity);
       }
     }
 }
