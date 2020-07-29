@@ -19,14 +19,19 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     [SerializeField] private Transform GoodGuySpwaner;
     [SerializeField] private Transform BadGuySpwaner;
     [SerializeField] private item[] items;
+    [SerializeField] private item[] itemsMap2;
+
     [SerializeField] private GameObject itemsContainer;
     [SerializeField] public ParticleSystem explosion;
+    [SerializeField] public GameObject Map0;
+    [SerializeField] public GameObject Map1;
     
     
 
     // Start is called before the first frame update
     void Start() {
       if (PhotonNetwork.IsMasterClient) {
+        // NextMap();
         foreach (var item in items) {
           GameObject i =
             PhotonNetwork.InstantiateSceneObject(item.itemObject.name, item.spawnPoint.transform.position,Quaternion.identity);
@@ -44,9 +49,24 @@ public class NetworkManager : MonoBehaviourPunCallbacks
        
       }
       if (PlayerPrefs.GetInt("index") == 1) {
-        PhotonNetwork.Instantiate(playerShooterPrefab, GoodGuySpwaner.position, Quaternion.identity, 0);
+       GameObject player = PhotonNetwork.Instantiate(playerShooterPrefab, GoodGuySpwaner.position, Quaternion.identity, 0);
+       Camera.main.GetComponent<SmoothCamera2D>().target = player.transform;
       } else {
-        PhotonNetwork.Instantiate(playerDefenderPrefab, BadGuySpwaner.position, Quaternion.identity, 0);
+        GameObject player = PhotonNetwork.Instantiate(playerDefenderPrefab, BadGuySpwaner.position, Quaternion.identity, 0);
+        Camera.main.GetComponent<SmoothCamera2D>().target = player.transform;
+
+      }
+    }
+
+    public void NextMap() {
+      Map0.SetActive(false);
+      Map1.SetActive(true);
+      if (PhotonNetwork.IsMasterClient) {
+        foreach (var item in itemsMap2) {
+          GameObject i =
+            PhotonNetwork.InstantiateSceneObject(item.itemObject.name, item.spawnPoint.transform.position,item.spawnPoint.transform.rotation);
+          i.GetComponent<ItemController>().explosion = explosion;
+        }
       }
     }
 

@@ -28,16 +28,27 @@ public class ItemController : MonoBehaviour {
     }
 
     [PunRPC]
+    public void NextMap() {
+      Debug.Log("KanZZ");
+      FindObjectOfType<NetworkManager>().NextMap();
+    }
+
+    [PunRPC]
     public void Explode() {
       Debug.Log("Explode Called");
       explosion.transform.position = transform.position;
       explosion.gameObject.SetActive(true);
       explosion.GetComponent<AudioSource>().Play();
       explosion.Play();
-      Destroy(this.gameObject);
+      if (PhotonNetwork.IsMasterClient) {
+       PhotonNetwork.Destroy(gameObject);
+      }
+
       //Tahkeeeeeer Rasssssmmmmmmmyyyyy BazBoooooz?????
       if (GameObject.FindGameObjectsWithTag("Items").Length == 1) {
-        Debug.Log("KanZZ");
+        if (PhotonNetwork.IsMasterClient) {
+          GetComponent<PhotonView>().RPC("NextMap",RpcTarget.All);
+        }
       }
     }
 }
