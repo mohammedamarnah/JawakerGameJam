@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 6294164296132798467}
   - component: {fileID: 1948741096853724031}
   m_Layer: 0
-  m_Name: Hostage
+  m_Name: NPC1
   m_TagString: Hostage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

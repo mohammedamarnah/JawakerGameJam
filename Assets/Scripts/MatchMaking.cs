@@ -17,13 +17,8 @@ public class MatchMaking : MonoBehaviourPunCallbacks {
             PhotonNetwork.JoinRandomRoom();
         });
         infoText.text = "Searching for room";
-        sounds.onClick.AddListener(ToggleSound);
     }
 
-    public void ToggleSound() {
-        
-    }
-    
     public override void OnConnectedToMaster() {
         play.gameObject.SetActive(true);
         infoText.text = "Searching for room ..";

@@ -5,6 +5,11 @@ using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[Serializable]
+public struct item {
+  public GameObject itemObject;
+  public GameObject spawnPoint;
+}
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     [Tooltip("Player Prefab")]
@@ -13,10 +18,20 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     [SerializeField] NPCPath[] Pointers;
     [SerializeField] private Transform GoodGuySpwaner;
     [SerializeField] private Transform BadGuySpwaner;
+    [SerializeField] private item[] items;
+    [SerializeField] private GameObject itemsContainer;
+    [SerializeField] public ParticleSystem explosion;
+    
+    
 
     // Start is called before the first frame update
     void Start() {
       if (PhotonNetwork.IsMasterClient) {
+        foreach (var item in items) {
+          GameObject i =
+            PhotonNetwork.InstantiateSceneObject(item.itemObject.name, item.spawnPoint.transform.position,Quaternion.identity);
+          i.GetComponent<ItemController>().explosion = explosion;
+        }
         Debug.Log("Iam Master");
         foreach (var path in Pointers) {
           Hostage npc = PhotonNetwork.InstantiateSceneObject(path.NPC.name, path.Paths[0].transform.position,
