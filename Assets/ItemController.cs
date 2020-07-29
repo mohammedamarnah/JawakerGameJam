@@ -35,8 +35,12 @@ public class ItemController : MonoBehaviour {
           PhotonNetwork.Destroy(npc);
         }
       }
-      FindObjectOfType<NetworkManager>().NextMap();
+      Debug.Log("Make Coin True");
+      FindObjectOfType<NetworkManager>().Coin.SetActive(true);
+      //FindObjectOfType<NetworkManager>().NextMap();
     }
+    
+   
 
     [PunRPC]
     public void Explode() {
@@ -47,6 +51,7 @@ public class ItemController : MonoBehaviour {
       if (PhotonNetwork.IsMasterClient && GameObject.FindGameObjectsWithTag("Items").Length > 1) {
        PhotonNetwork.Destroy(gameObject);
       }
+
       //Tahkeeeeeer Rasssssmmmmmmmyyyyy BazBoooooz?????
       if (GameObject.FindGameObjectsWithTag("Items").Length <= 1) {
         if (PhotonNetwork.IsMasterClient) {

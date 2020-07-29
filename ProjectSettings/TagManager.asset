@@ -10,6 +10,7 @@ TagManager:
   - Hostage
   - Items
   - defender
+  - coin
   layers:
   - Default
   - TransparentFX

@@ -26,11 +26,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     [SerializeField] public ParticleSystem explosion;
     [SerializeField] public GameObject Map0;
     [SerializeField] public GameObject Map1;
-    
+    [SerializeField] public GameObject Coin;
+    [SerializeField] public GameObject Coin0Spawner;
+    [SerializeField] public GameObject Coin1Spawner;
+
     
 
     // Start is called before the first frame update
     void Start() {
+      Coin.transform.position = Coin0Spawner.transform.position;
       if (PhotonNetwork.IsMasterClient) {
         // NextMap();
         foreach (var item in items) {
@@ -59,6 +63,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
 
     public void NextMap() {
+      Coin.transform.position = Coin1Spawner.transform.position;
       if (Map1.activeSelf) {
         LeaveRoom();
       }

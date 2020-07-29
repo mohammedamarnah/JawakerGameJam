@@ -276,7 +276,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e19f199a53aa44869a43ab695de2c715, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -566,7 +566,7 @@ PrefabInstance:
     - target: {fileID: 1443570759380699648, guid: 5776e012da0a54265b31dd8788b34e4d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 26.54303
+      value: 26.542969
       objectReference: {fileID: 0}
     - target: {fileID: 2666145790859058824, guid: 5776e012da0a54265b31dd8788b34e4d,
         type: 3}
@@ -607,6 +607,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666145791673093476, guid: 5776e012da0a54265b31dd8788b34e4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666145791673093476, guid: 5776e012da0a54265b31dd8788b34e4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666145791673093476, guid: 5776e012da0a54265b31dd8788b34e4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666145791673093476, guid: 5776e012da0a54265b31dd8788b34e4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 589308458}
+    - target: {fileID: 2666145791673093476, guid: 5776e012da0a54265b31dd8788b34e4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayClickSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666145791673093476, guid: 5776e012da0a54265b31dd8788b34e4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2666145791673093483, guid: 5776e012da0a54265b31dd8788b34e4d,
         type: 3}
@@ -747,6 +777,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666145792523791020, guid: 5776e012da0a54265b31dd8788b34e4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666145792523791020, guid: 5776e012da0a54265b31dd8788b34e4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666145792523791020, guid: 5776e012da0a54265b31dd8788b34e4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666145792523791020, guid: 5776e012da0a54265b31dd8788b34e4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 589308458}
+    - target: {fileID: 2666145792523791020, guid: 5776e012da0a54265b31dd8788b34e4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayClickSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666145792523791020, guid: 5776e012da0a54265b31dd8788b34e4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2666145792523791027, guid: 5776e012da0a54265b31dd8788b34e4d,
         type: 3}

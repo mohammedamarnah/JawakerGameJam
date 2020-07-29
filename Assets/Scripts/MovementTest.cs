@@ -30,6 +30,12 @@ public class MovementTest : MonoBehaviourPun {
         }
     }
     
+    void OnTriggerEnter2D(Collider2D col) {
+      if (col.gameObject.tag == "coin") {
+        col.gameObject.SetActive(false);
+        FindObjectOfType<NetworkManager>().NextMap();
+      }
+    }
     void FixedUpdate() {
       if (_photonView.IsMine) {
         float newYVelocity = moveDirection.y * moveSpeed;
