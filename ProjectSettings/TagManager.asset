@@ -9,6 +9,7 @@ TagManager:
   - shooter
   - Hostage
   - Items
+  - defender
   layers:
   - Default
   - TransparentFX
