@@ -210,12 +210,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227808158}
   m_CullTransparentMesh: 0
---- !u!4 &337018531 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 337018531, guid: 9cf1215783e3e497c9e4b2bac718fa18,
-    type: 3}
-  m_PrefabInstance: {fileID: 1713045779}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &348475521 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 348475521, guid: aee127093146245e9a1ffbb0e99ce9a6,
@@ -860,12 +854,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.20082363, y: 0.20082366}
   m_EdgeRadius: 0
---- !u!4 &1207198622 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1207198622, guid: 9cf1215783e3e497c9e4b2bac718fa18,
-    type: 3}
-  m_PrefabInstance: {fileID: 1713045779}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1373670622
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,7 +1139,7 @@ PrefabInstance:
     - target: {fileID: 1160556041010546398, guid: 9cf1215783e3e497c9e4b2bac718fa18,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1713045782, guid: 9cf1215783e3e497c9e4b2bac718fa18, type: 3}
@@ -1223,6 +1211,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 101189154, guid: aee127093146245e9a1ffbb0e99ce9a6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 348475519, guid: aee127093146245e9a1ffbb0e99ce9a6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804353749, guid: aee127093146245e9a1ffbb0e99ce9a6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1846852432, guid: aee127093146245e9a1ffbb0e99ce9a6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3586916292883344936, guid: aee127093146245e9a1ffbb0e99ce9a6,
         type: 3}
       propertyPath: m_Name
@@ -1231,7 +1235,7 @@ PrefabInstance:
     - target: {fileID: 3586916292883344936, guid: aee127093146245e9a1ffbb0e99ce9a6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3586916292883344939, guid: aee127093146245e9a1ffbb0e99ce9a6,
         type: 3}
@@ -1368,6 +1372,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1833978033}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1833978047 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 562295803, guid: aee127093146245e9a1ffbb0e99ce9a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1833978033}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1833978048 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 909206643, guid: aee127093146245e9a1ffbb0e99ce9a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1833978033}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1846852434 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1846852434, guid: aee127093146245e9a1ffbb0e99ce9a6,
@@ -1420,8 +1436,8 @@ MonoBehaviour:
   - {fileID: 348475521}
   - {fileID: 1804353751}
   - {fileID: 1846852434}
-  GoodGuySpwaner: {fileID: 1207198622}
-  BadGuySpwaner: {fileID: 337018531}
+  GoodGuySpwaner: {fileID: 1833978047}
+  BadGuySpwaner: {fileID: 1833978048}
   items:
   - itemObject: {fileID: 1182254591492241336, guid: 0c0c0078a547141f49cc0f6dd4aa2353,
       type: 3}
@@ -1528,11 +1544,11 @@ MonoBehaviour:
     spawnPoint: {fileID: 1833978043}
   itemsContainer: {fileID: 1713045780}
   explosion: {fileID: 1182639279}
-  Map0: {fileID: 1713045781}
-  Map1: {fileID: 1833978034}
+  Map0: {fileID: 1833978034}
+  Map1: {fileID: 1713045781}
   Coin: {fileID: 1189227606}
-  Coin0Spawner: {fileID: 6433614205851558724}
-  Coin1Spawner: {fileID: 1833978042}
+  Coin0Spawner: {fileID: 2005435438}
+  Coin1Spawner: {fileID: 2005435438}
 --- !u!4 &1901654833
 Transform:
   m_ObjectHideFlags: 0
@@ -1546,6 +1562,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2005435438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2005435439}
+  m_Layer: 0
+  m_Name: CoinSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2005435439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005435438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7, y: -0.75, z: 306.64688}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1182254589427497673 stripped
 GameObject:

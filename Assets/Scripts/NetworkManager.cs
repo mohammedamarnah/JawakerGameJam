@@ -34,15 +34,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     // Start is called before the first frame update
     void Start() {
-      Coin.transform.position = Coin0Spawner.transform.position;
+      Coin.transform.position = Coin1Spawner.transform.position;
       if (PhotonNetwork.IsMasterClient) {
         // NextMap();
-        foreach (var item in items) {
+        foreach (var item in itemsMap2) {
           GameObject i =
             PhotonNetwork.InstantiateSceneObject(item.itemObject.name, item.spawnPoint.transform.position,Quaternion.identity);
           i.GetComponent<ItemController>().explosion = explosion;
         }
-        foreach (var path in Pointers) {
+        foreach (var path in Pointers2) {
           Hostage npc = PhotonNetwork.InstantiateSceneObject(path.NPC.name, path.Paths[0].transform.position,
             path.Paths[0].transform.rotation).GetComponent<Hostage>();
           npc.pointers = path.Paths;
@@ -63,19 +63,21 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
 
     public void NextMap() {
-      Coin.transform.position = Coin1Spawner.transform.position;
+      Debug.Log("Next Map : "+Map1.name);
+      Coin.transform.position = Coin0Spawner.transform.position;
       if (Map1.activeSelf) {
         LeaveRoom();
       }
+      Debug.Log("???");
       Map0.SetActive(false);
       Map1.SetActive(true);
       if (PhotonNetwork.IsMasterClient) {
-        foreach (var item in itemsMap2) {
+        foreach (var item in items) {
           GameObject i =
             PhotonNetwork.InstantiateSceneObject(item.itemObject.name, item.spawnPoint.transform.position,item.spawnPoint.transform.rotation);
           i.GetComponent<ItemController>().explosion = explosion;
         }
-        foreach (var path in Pointers2) {
+        foreach (var path in Pointers) {
           Hostage npc = PhotonNetwork.InstantiateSceneObject(path.NPC.name, path.Paths[0].transform.position,
             path.Paths[0].transform.rotation).GetComponent<Hostage>();
           npc.pointers = path.Paths;
@@ -107,12 +109,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
           PhotonNetwork.Destroy(item);
         }
         
-        foreach (var item in items) {
+        foreach (var item in itemsMap2) {
           GameObject i =
             PhotonNetwork.InstantiateSceneObject(item.itemObject.name, item.spawnPoint.transform.position,item.spawnPoint.transform.rotation);
           i.GetComponent<ItemController>().explosion = explosion;
         }
-        foreach (var path in Pointers) {
+        foreach (var path in Pointers2) {
           Hostage npc = PhotonNetwork.InstantiateSceneObject(path.NPC.name, path.Paths[0].transform.position,
             path.Paths[0].transform.rotation).GetComponent<Hostage>();
           npc.pointers = path.Paths;
