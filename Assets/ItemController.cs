@@ -29,25 +29,29 @@ public class ItemController : MonoBehaviour {
 
     [PunRPC]
     public void NextMap() {
-      Debug.Log("KanZZ");
+      if (PhotonNetwork.IsMasterClient) {
+        GameObject[] oldNPC = GameObject.FindGameObjectsWithTag("Hostage");
+        foreach (var npc in oldNPC) {
+          PhotonNetwork.Destroy(npc);
+        }
+      }
       FindObjectOfType<NetworkManager>().NextMap();
     }
 
     [PunRPC]
     public void Explode() {
-      Debug.Log("Explode Called");
       explosion.transform.position = transform.position;
       explosion.gameObject.SetActive(true);
       explosion.GetComponent<AudioSource>().Play();
       explosion.Play();
-      if (PhotonNetwork.IsMasterClient) {
+      if (PhotonNetwork.IsMasterClient && GameObject.FindGameObjectsWithTag("Items").Length > 1) {
        PhotonNetwork.Destroy(gameObject);
       }
-
       //Tahkeeeeeer Rasssssmmmmmmmyyyyy BazBoooooz?????
-      if (GameObject.FindGameObjectsWithTag("Items").Length == 1) {
+      if (GameObject.FindGameObjectsWithTag("Items").Length <= 1) {
         if (PhotonNetwork.IsMasterClient) {
           GetComponent<PhotonView>().RPC("NextMap",RpcTarget.All);
+          PhotonNetwork.Destroy(gameObject);
         }
       }
     }

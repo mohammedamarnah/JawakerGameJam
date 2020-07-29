@@ -8,9 +8,11 @@ public class Weapon : MonoBehaviour {
     public Bullet bullet;
     public float shootingSpeed;
     [SerializeField] private PhotonView _photonView;
+    [SerializeField] public float timer = 0;
 
     void FixedUpdate() {
-        if (_photonView.IsMine) {
+        timer += Time.deltaTime;
+        if (_photonView.IsMine && timer > 5f) {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             _photonView.RPC("Fire",RpcTarget.All,mousePosition);
         }

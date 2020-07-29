@@ -15,13 +15,6 @@ public class MovementTest : MonoBehaviourPun {
 
     void Awake() {
       mainCamera = Camera.main;
-      if (!photonView.IsMine) {
-        gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        if (gameObject.tag.Equals("defender")) {
-          gameObject.transform.GetChild(0).GetComponent<BoxCollider2D>().isTrigger = true;
-
-        }
-      }
     }
   
     void Update() {

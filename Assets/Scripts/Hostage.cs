@@ -106,11 +106,22 @@ public class Hostage : MonoBehaviour {
   public void GetInjured() {
     healthbar.localScale -= new Vector3(0.05f, 0f, 0f);
     healthbar.localPosition -= new Vector3(0.01f, 0f, 0f);
+    //GetComponent<PhotonView>().RPC("Restart",RpcTarget.All);
+    if (PhotonNetwork.IsMasterClient) {
+      Debug.Log("Call");
+      GetComponent<PhotonView>().RPC("Restart",RpcTarget.All);
+    }
+
     if (healthbar.localScale.x <= 0f) {
       Die();
     }
   }
 
+  [PunRPC]
+  void Restart() {
+    FindObjectOfType<NetworkManager>().RestartMap();
+  }
+  
   void Die() {
     if (PhotonNetwork.IsMasterClient) {
       Debug.Log("Master Destroy NPC");
